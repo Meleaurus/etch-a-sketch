@@ -1,0 +1,21 @@
+/* */
+.container {
+    height: 75vmin;
+    width: 75vmin;
+    display: inline-grid;
+    grid-template: repeat(16, 1fr) / repeat(16, 1fr); 
+}
+
+.options {
+    display: flex;
+}
+
+.grid {
+    display: inline-grid;
+    background-color: gray;
+    border: 0.5vmin solid black;
+}
+
+.hover {
+    background-color: red;
+}
