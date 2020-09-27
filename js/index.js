@@ -1,29 +1,46 @@
-const options = document.querySelector(".options");
-const btn = document.createElement('button');
-btn.textContent = "Clear"
-options.appendChild(btn);
+const container = document.querySelector("#container");
+const btn = document.querySelector("#btn");
+
+createGrid = () => {
+    for (let i = 0; i < 256; i++) {
+        const div = document.createElement('div');
+        div.classList.add('square'); 
+        container.appendChild(div);
+    }
+}
+createGrid();
+
 btn.addEventListener('click', function() {
-    createGrid(enterSize());
+    updateGrid();
 })
 
-const container = document.querySelector(".container");
-
-const numBoxes = 256;
-createGrid = function(number) {
-    for (let i = 0; i < number; i++) {
+updateGrid = () => {
+    container.innerHTML = "";
+    let size = parseInt(prompt('Please enter in a value for the grid side length: ', 16));
+    for (let i = 0; i < size*size; i++) {
         const div = document.createElement('div');
-        div.classList.add('grid'); 
+        div.classList.add('square');
         container.appendChild(div);
-        div.addEventListener('mouseover', function() {
-            div.classList.add('hover');
-        }) 
     }
+    container.style.setProperty(
+        "grid-template-columns",
+        `repeat(${size}, 1fr)`
+    );
+    container.style.setProperty(
+        "grid-template-rows",
+        `repeat(${size}, 1fr)`
+    );
 }
 
-enterSize = function() {
-    do {
-        let size = parseInt(prompt('Please enter in a value for the grid side length: ', 16));
-    }
-    while (size < 20 && size > 10);
-    return size*size
+addEvent = function(square) {
+    console.log('dabdab');
+    square.addEventListener("mouseover", function(event) {
+        event.target.classList.replace("square", "hover");
+    });
 }
+
+const square = document.getElementsByTagName('div');
+square.forEach(addEvent);
+
+
+
