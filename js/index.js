@@ -32,15 +32,18 @@ updateGrid = () => {
     );
 }
 
-addEvent = function(square) {
-    console.log('dabdab');
+function addEvent(square) {
     square.addEventListener("mouseover", function(event) {
         event.target.classList.replace("square", "hover");
     });
 }
 
-const square = document.getElementsByTagName('div');
-square.forEach(addEvent);
+let square = document.getElementsByClassName('square');
+let squareArr = Array.from(square);
+squareArr.forEach(addEvent);
+
+
+    
 
 
 
