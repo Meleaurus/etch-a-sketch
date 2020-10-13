@@ -3,7 +3,7 @@
     height: 75vmin;
     width: 75vmin;
     display: inline-grid;
-    grid-template: repeat(16, 1fr) / repeat(16, 1fr); 
+    /* grid-template: repeat(16, 1fr) / repeat(16, 1fr); */
 }
 
 #options {
@@ -12,11 +12,9 @@
 
 .square {
     display: inline-grid;
-    background-color: gray;
-    border: 0.5vmin solid black;
+    background-color: gainsboro;
 }
 
 .hover {
-    background-color: blue;
-    border: 0.5vmin solid black;
+    background-color: gray;
 }
