@@ -3,6 +3,7 @@ const resizeBtn = document.querySelector("#resizeBtn");
 const randomBtn = document.querySelector("#randomBtn");
 const darkenBtn = document.querySelector('#darkenBtn')
 const resetBtn = document.querySelector("#resetBtn");
+let min = 0;
 
 addHover = (square) => {
     square.addEventListener("mouseover", function(event) {
@@ -19,7 +20,8 @@ addHoverRandom = (square) => {
 addHoverDarken = (square) => {
     square.addEventListener("mouseover", function(event) {
         square.style.backgroundColor = "black";
-        square.style.opacity = String(Math.random());
+        /* square.style.opacity = String(percent); */
+        square.style.opacity = String((Math.floor(Math.random() * (10 - (min*10) + 1) + (min*10))/10)); 
     });
 }
 
@@ -56,21 +58,27 @@ createGrid = () => {
 createGrid();
 
 resetBtn.addEventListener('click', function() {
+    min = 0;
     container.innerHTML = "";
     createGrid();
 })
 
 randomBtn.addEventListener('click', function() {
+    min = 0;
     squares = document.querySelectorAll(".square");
     squares.forEach(addHoverRandom);
 })
 
 darkenBtn.addEventListener('click', function() {
+    if (min < 1) {
+        min += 0.1;
+    }
     squares = document.querySelectorAll(".square");
     squares.forEach(addHoverDarken);
 })
 
 resizeBtn.addEventListener('click', function() {
+    min = 0;
     updateGrid();
 })
 
